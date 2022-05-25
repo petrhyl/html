@@ -127,11 +127,13 @@ h1{
     text-align: center;
     color: rgb(225, 252, 255);
     display: flex;
-    text-align: center;
-    justify-content: space-between;
+}
+.footer video{
+    justify-self: right;
 }
 .footer p{
     padding-top:10px;
+    margin: auto auto;
 }
 
 #form{
@@ -175,10 +177,14 @@ h1{
         width: 100%;
     }
 }
-@media screen and (max-width:680px) {
+@media screen and (max-width:660px) {
     .menu_h{
         display: block;
         height: fit-content;
+    }
+    .ul_h1, .ul_h2{
+        display: flex;
+        justify-content: space-between;
     }
     .content{
         font-size: 14px;
@@ -200,16 +206,12 @@ h1{
     .menu_v{
         display: none;
     }
-    .menu_h{
-       display: block;
-       height: fit-content;
-    }
     .menu_h ul li a{
-        font-size: 15px;
-        padding: 0 5px;
+        font-size: 17px;
+        padding: 0 10px;
     }
     .menu_h a:hover{
-        font-size: 17px;
+        font-size: 19px;
     }
     
 }
