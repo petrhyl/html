@@ -195,13 +195,7 @@ h1{
         height: 25vh;
     }
 }
-@media screen and (max-width:660px) {
-    .main{
-        display: block;
-    }
-    .header{
-        height: 10vh;
-    }
+@media screen and (max-width:742px) {
     .menu_h{
         display: block;
         height: fit-content;
@@ -212,6 +206,14 @@ h1{
     .ul_h1, .ul_h2{
         display: flex;
         justify-content: space-between;
+    }
+}
+@media screen and (max-width:660px) {
+    .main{
+        display: block;
+    }
+    .header{
+        height: 10vh;
     }
     .menu_v{
         display: none;
