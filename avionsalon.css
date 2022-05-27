@@ -206,14 +206,7 @@ h1{
     }
     .header{
         height: fit-content;
-    }
-    .menu_h{
-        display: block;
-        height:16vh;
-    }
-    .menu_h ul li a{
-        line-height: 8vh;
-    }    
+    }        
     .ul_h1, .ul_h2{
         display: flex;
         justify-content: space-between;
@@ -222,13 +215,25 @@ h1{
         width: 85%;
     }
 }
-@media screen and (max-width:680px) {
+@media screen and (max-width:742px){
     .main{
         display: block;
+    } 
+    .menu_h{
+        display: block;
+        height:16vh;
+    }
+    .menu_h ul li a{
+        line-height: 8vh;
     }
     .menu_v{
         display: none;
     }
+    .content{
+        width: 100%;
+    }
+}
+@media screen and (max-width:660px) {       
     .menu_h{
         height:12vh;
     }
