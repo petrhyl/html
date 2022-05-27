@@ -102,7 +102,7 @@ h1{
 }
 
 .content_img{
-    width: 80%;
+    width: 75%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -157,11 +157,11 @@ h1{
 }
 #form label{
     font-size: small;
-    margin-top: 12px;
+    margin-top: 12px;    
 }
 #form input{
     margin-top:14px;
-    margin-left: 12px;
+    margin-left: auto;
 }
 #form select{
     grid-row: 4 / 5;
@@ -196,6 +196,9 @@ h1{
     }
 }
 @media screen and (max-width:742px) {
+    .main{
+        grid-template-columns: 80% 20%;
+    }
     .menu_h{
         display: block;
         height: fit-content;
@@ -206,6 +209,9 @@ h1{
     .ul_h1, .ul_h2{
         display: flex;
         justify-content: space-between;
+    }
+    .content_img{
+        width: 85%;
     }
 }
 @media screen and (max-width:660px) {
