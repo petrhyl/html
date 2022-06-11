@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="avionsalon.css">
+    <link rel="stylesheet" href="css_scss/avionsalon.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <title>Avionsalón - Petr Hýl</title>
 </head>
 
@@ -31,15 +32,104 @@
         </div>
         <aside class="menu_v">
             <ul class="ul_v">
-                <li><a href="https://www.airbus.com/en" class="ref_v" target="_blank"><img src="images/airbus.jpg" alt="airbus"></a></li>
-                <li><a href="https://www.boeing.com/" class="ref_v" target="_blank"><img src="images/Boeing.jpg" alt="boing"></a></li>
-                <li><a href="https://embraer.com/global/en" class="ref_v" target="_blank"><img src="images/embraer.jpg" alt="embraer"></a></li>
-                <li><a href="https://www.uacrussia.ru/en/corporation/company/pao-tupolev/" class="ref_v" target="_blank"><img src="images/tupolev.jpg" alt="tupolev"></a></li>
+                <li><a href="https://www.airbus.com/en" class="ref_v" target="_blank"><img src="images/airbus.jpg"
+                            alt="airbus"></a></li>
+                <li><a href="https://www.boeing.com/" class="ref_v" target="_blank"><img src="images/Boeing.jpg"
+                            alt="boing"></a></li>
+                <li><a href="https://embraer.com/global/en" class="ref_v" target="_blank"><img src="images/embraer.jpg"
+                            alt="embraer"></a></li>
+                <li><a href="https://www.uacrussia.ru/en/corporation/company/pao-tupolev/" class="ref_v"
+                        target="_blank"><img src="images/tupolev.jpg" alt="tupolev"></a></li>
             </ul>
         </aside>
         <div class="content">
-            <h1>Vítáme Vás na stránkách Aviosalónu Speed and Death.</h1>
-            
+            <h1>Objednávkový formulář</h1>
+            <p id="p_order_mesg"></p>
+            <form id="frm_order" class="my-2 p-3" onchange="hideMesg()">
+                <div class="row mb-3">
+                    <div class="col-md-7">
+                        <label for="slct_ticket" class="form-label">Výběr letenek:</label>
+                        <select id="slct_ticket" class="form-select" onchange="priceCounting()">
+                            <option name="ticket" value="0" selected hidden>- vyber destinaci -</option>
+                            <option name="ticket" value="500">Praha - 500,-</option>
+                            <option name="ticket" value="3000">Frankfurt - 3 000,-</option>
+                            <option name="ticket" value="15000">New York - 15 000,-</option>
+                            <option name="ticket" value="30000">Sydney - 30 000,-</option>
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="slct_cnt_ticket" class="form-label">Počet cestujících:</label>
+                        <select id="slct_cnt_ticket" class="form-select" onchange="priceCounting()">
+                            <option name="cnt_ticket" value="1">1</option>
+                            <option name="cnt_ticket" value="2">2</option>
+                            <option name="cnt_ticket" value="3">3</option>
+                            <option name="cnt_ticket" value="4">4</option>
+                            <option name="cnt_ticket" value="5">5</option>
+                            <option name="cnt_ticket" value="6">6</option>
+                            <option name="cnt_ticket" value="7">7</option>
+                            <option name="cnt_ticket" value="8">8</option>
+                            <option name="cnt_ticket" value="9">9</option>
+                            <option name="cnt_ticket" value="10">10</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row ms-2">
+                    <div class="mb-3 form-check col-md-6">
+                        <input type="checkbox" id="return_ticket" class="form-check-input" value="2"
+                            onclick="priceCounting()">
+                        <label class="form-check-label" for="return_ticket">Zpáteční letenka</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="rbt_group" class="form-label">Způsob cestování:</label>
+                    <div id="rbt_group" class="row ms-2">
+                        <div class="col-sm-4 form-check" onclick="priceCounting()">
+                            <input type="radio" class="form-check-input" name="rbt_class" id="rbt_economy" value="1"
+                                checked><label for="rbt_economy" class="form-check-label">Economy</label>
+                        </div>
+                        <div class="col-sm-4 form-check" onclick="priceCounting()">
+                            <input type="radio" class="form-check-input" name="rbt_class" id="rbt_bussiness"
+                                value="1.25"><label for="rbt_bussiness" class="form-check-label">Bussiness</label>
+                        </div>
+                        <div class="col-sm-4 form-check" onclick="priceCounting()">
+                            <input type="radio" class="form-check-input" name="rbt_class" id="rbt_roayal"
+                                value="1.5"><label for="rbt_roayal" class="form-check-label">Roayal</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <div class="col-sm-6">
+                        <label for="txt_total_price" class="form-label">Celková cena:</label>
+                        <input type="text" class="form-control txt_in" id="txt_total_price" value="" readonly>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="col_budget" class="form-label">Váš rozpočet:</label>
+                    <div class="col-sm-6" id="col_budget">
+                        <input type="text" class="form-control txt_in" id="txt_budget" value="">
+                    </div>
+                    <div class="col-sm-6 d-grid">
+                        <input type="button" id="btn_compare" class="btn btn-info" value="Porovnat částky"
+                            onclick="comparePriceBudget()">
+                    </div>
+                </div>
+                <div class="mb-3" id="div_lbl_compare_mesg">
+                    <label class="form-label" id="lbl_compare_mesg"></label>
+                </div>
+                <div class="mb-5">
+                    <label for="txta_comment" class="form-label">Poznámka k objednávce:</label>
+                    <div id="div_comment">
+                        <span id="tooltip_comment">Poznámka nesmí obsahovat<br />speciální znaky (např.: /"#&>).</span>                       
+                    <textarea id="txta_comment" cols="40" rows="10" class="form-control txt_in"
+                        placeholder="Zde napište speciální požadavky" oninput="validateText()"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 offset-sm-4 d-grid">
+                        <input type="button" class="btn btn-info" value="Odeslat Objednávku" onclick="submitOrder()">
+                    </div>
+                </div>
+            </form>
         </div>
         <footer class="footer">
             <p>Petr Hýl&copy;<br />
@@ -47,10 +137,12 @@
             </p>
             <video width="auto" height="100%" controls>
                 <source src="images/production ID_3678380.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-              </video>
+                Your browser does not support the video tag.
+            </video>
         </footer>
     </main>
 </body>
+<script src="bootstrap/js/bootstrap.js"></script>
+<script src="css_scss/avion.js"></script>
 
 </html>
