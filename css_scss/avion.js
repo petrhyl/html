@@ -70,6 +70,7 @@ function submitOrder() {
         }
         document.querySelector('#lbl_compare_mesg').innerHTML = '';
     } else {
+        msgElement.style.color = "red";
         msg="Poznámka obsahuje neplatné znaky";
     }
     msgElement.innerHTML = msg;
