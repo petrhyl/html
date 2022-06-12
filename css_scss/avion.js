@@ -14,12 +14,12 @@ function priceCounting() {
     }
 }
 function comparePriceBudget() {
-    let price = document.querySelector("#txt_total_price").value;
-    price = price.substring(0, price.length - 2);
-    price = price.replace(' ', '');
+    let price = document.querySelector('#txt_total_price').value;
+    price = price.replace(/\s/g, "");
+    price = price.substring(0, price.length - 2);    
     let budget = document.querySelector('#txt_budget').value
-    budget = budget.replace(' ', '');
-    budget = budget.replace(',', '.');
+    budget = budget.replace(" ", "");
+    budget = budget.replace(",", ".");
     let mesg = "";
     let lab = document.querySelector('#lbl_compare_mesg');
     if (!isNaN(budget) && !isNaN(price)) {
