@@ -16,15 +16,15 @@ function priceCounting() {
 function comparePriceBudget() {
     let price = document.querySelector('#txt_total_price').value;
     price = price.replace(/\s/g, "");
-    price = price.substring(0, price.length - 2);    
+    price = price.substring(0, price.length - 2); 
     let budget = document.querySelector('#txt_budget').value
     budget = budget.replace(" ", "");
     budget = budget.replace(",", ".");
     let mesg = "";
     let lab = document.querySelector('#lbl_compare_mesg');
-    if (!isNaN(budget) && !isNaN(price)) {
-        budget = parseFloat(budget);
-        price = parseFloat(price);
+    if (!isNaN(budget) && price!="") {
+        budget = parseFloat(budget); 
+        price = parseFloat(price);        
         let differ = budget - price;
         if (differ >= 0) {
             mesg = "Máte dostatečné množství prostředků na nákup letenky.";
@@ -69,6 +69,8 @@ function submitOrder() {
             elm.selectedIndex = 0;
         }
         document.querySelector('#lbl_compare_mesg').innerHTML = '';
+        document.querySelector("#return_ticket").checked=false;
+        document.querySelector("#rbt_economy").checked=true;
     } else {
         msgElement.style.color = "red";
         msg="Poznámka obsahuje neplatné znaky";
